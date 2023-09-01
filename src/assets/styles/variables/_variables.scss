@@ -1,0 +1,30 @@
+@import "../mixins/mixins";
+
+// Colors
+$black: #000;
+$primary-text: #fff;
+$secondary-text: rgba(255, 255, 255, 0.5);
+$bcg: #0c0b1b;
+$bcg-footer: #0a0a0a;
+$border-color: #262626;
+$background-btn: #9b51e0;
+$tag-1: #00ba61;
+$tag-2: #ba0001;
+
+// Fonts
+$regular-font: "Inter", sans-serif;
+$system-fonts-list: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol";
+
+// Font Weight
+$fw-light: 300;
+$fw-base: 400;
+$fw-bold: 700;
+$fw-extra: 800;
+
+// Line Height
+$lh-base: 30px;
+
+// Font size
+$fs-base: 18px !default;

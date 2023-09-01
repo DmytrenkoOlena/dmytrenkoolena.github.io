@@ -1,0 +1,17 @@
+%custom-scrollbar {
+  @media only screen and (min-width: 600px) {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px #626374;
+      box-shadow: inset 0 0 6px #626374;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #626374;
+      border-radius: 100px;
+    }
+  }
+}

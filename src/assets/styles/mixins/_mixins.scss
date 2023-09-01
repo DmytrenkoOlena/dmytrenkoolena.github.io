@@ -1,0 +1,12 @@
+@import "helpers/breakpoints";
+@import "helpers/extend";
+
+@mixin font($fw, $fs, $lh: $lh-base, $ff: $regular-font) {
+  font: $fw #{$fs}/#{$lh} $ff;
+}
+
+@mixin transition($prop: all, $duration: 0.25s, $easing: ease-out) {
+  transition-duration: $duration;
+  transition-property: $prop;
+  transition-timing-function: $easing;
+}

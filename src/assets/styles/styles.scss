@@ -1,0 +1,587 @@
+@import "./reset/reset";
+@import "./variables/variables";
+@import "./mixins/mixins";
+
+html {
+  -webkit-text-size-adjust: none;
+  scroll-behavior: smooth;
+  font-family: $system-fonts-list;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @extend %custom-scrollbar;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  flex-direction: column;
+  background-color: $black;
+  height: 100%;
+  width: 100%;
+  min-width: 320px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: $primary-text;
+  font-family: $regular-font;
+  font-weight: $fw-base;
+
+  @include phones-landscape {
+    padding: 0;
+  }
+}
+
+a {
+  @include transition();
+
+  color: $primary-text;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    @include transition();
+  }
+}
+
+h1 {
+  @include font($fw-bold, 50px, 65px);
+
+  @include phones {
+    @include font($fw-bold, 30px, 42px);
+  }
+}
+
+h2 {
+  @include font($fw-bold, 36px, 46px);
+
+  @include phones {
+    @include font($fw-bold, 24px, 32px);
+  }
+}
+
+h3 {
+  @include font($fw-bold, 18px, 24px);
+
+  @include phones {
+    @include font($fw-bold, 16px, 21px);
+  }
+}
+
+p {
+  @include font($fw-base, 18px, 30px);
+
+  @include phones-landscape {
+    @include font($fw-light, 15px, 22px);
+  }
+}
+
+ul,
+div,
+section,
+textarea {
+  @extend %custom-scrollbar;
+}
+
+section {
+  width: 100%;
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 110px;
+    width: 100%;
+
+    @include tablets {
+      padding: 0 32px;
+    }
+
+    @include phones-landscape {
+      padding: 0 15px;
+    }
+  }
+}
+
+button {
+  @include font($fw-bold, 16px, 21px);
+  @include transition(all, 0.3s, linear);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 137px;
+  height: 57px;
+  padding: 18px 24px;
+  color: $secondary-text;
+  border-radius: 30px;
+  background: linear-gradient(
+    133deg,
+    #9b51e0 19.72%,
+    rgba(48, 129, 237, 0.8) 100%
+  );
+  background-position: 0 0;
+  background-size: 100% 100%;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:hover {
+    @include transition(all, 0.3s, linear);
+
+    background: linear-gradient(
+      89.99deg,
+      #9b51e0 5.48%,
+      rgba(48, 129, 237, 0.8) 63.52%,
+      #9b51e0 100.23%
+    );
+    background-position: 0% 100%;
+    background-size: 800% 100%;
+    color: $primary-text;
+  }
+
+  @include phones {
+    @include font($fw-bold, 18px, 24px);
+
+    color: $primary-text;
+    width: 100%;
+  }
+}
+
+// header
+.header {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 29px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+
+  @include phones {
+    padding: 24px 0;
+  }
+
+  &__logo {
+    display: flex;
+    width: 193px;
+    height: 27px;
+
+    @include phones-landscape {
+      width: 145px;
+      height: 22px;
+    }
+  }
+
+  &__btn {
+    @include phones-landscape {
+      display: none;
+    }
+  }
+}
+
+// home
+.hero {
+  background: url("../img/hero-bg.webp") no-repeat right top / 100%;
+  position: relative;
+  overflow: hidden;
+
+  @include phones {
+    background: url("../img/hero-bg-mob.webp") no-repeat right top / 100%;
+  }
+
+  &__overlay {
+    @include desktops {
+      background: url("../img/hero-elements.webp") no-repeat top right / 100%;
+      position: absolute;
+      top: 0;
+      content: "";
+      width: 100%;
+      height: 100%;
+    }
+
+    @include phones {
+      background: url("../img/hero-elements-sm.webp") no-repeat top right / 100%;
+      right: 0;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 0 146px;
+
+    @include phones-landscape {
+      display: flex;
+      flex-direction: column;
+      padding: 130px 0 160px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 21px;
+    max-width: 574px;
+    z-index: 1;
+
+    @include phones-landscape {
+      max-width: 100%;
+    }
+  }
+
+  &__description {
+    color: $secondary-text;
+  }
+
+  &__btn {
+    min-width: 210px;
+    height: 60px;
+    margin-top: 33px;
+
+    @include phones-landscape {
+      height: 72px;
+      margin: 30px 0 64px;
+    }
+  }
+
+  &__image {
+    width: 568px;
+    height: 568px;
+
+    @include tablets {
+      width: 345px;
+      height: 345px;
+      border-radius: 30px;
+    }
+  }
+}
+
+// about
+.about {
+  background-color: $black;
+  padding: 150px 0 170px;
+  overflow: hidden;
+  position: relative;
+
+  @include desktops {
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      background: url("../img/tube.webp") no-repeat;
+      width: 162px;
+      height: 162px;
+
+      @include phones {
+        display: none;
+      }
+    }
+
+    &::before {
+      bottom: 0;
+      right: 22%;
+      transform: rotate(165deg);
+    }
+
+    &::after {
+      top: 0;
+      left: 25%;
+      transform: rotate(105deg);
+    }
+  }
+
+  @include tablets {
+    padding: 0;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+
+    p {
+      color: $secondary-text;
+    }
+  }
+
+  &__card {
+    @include transition();
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+    padding: 15px 15px 25px;
+    border-radius: 10px;
+    border: 1px solid $border-color;
+    background: $black;
+    cursor: pointer;
+
+    @include phones-landscape {
+      width: 100%;
+    }
+
+    &:hover {
+      @include transition();
+
+      background: $bcg;
+    }
+
+    &--img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &--tag {
+      @include font($fw-extra, 15px, 20px);
+
+      color: $tag-1;
+    }
+
+    &--title {
+      margin: 5px 0 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    &--description {
+      @include font($fw-light, 15px, 22px);
+
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: $secondary-text;
+    }
+
+    &--btn {
+      @include transition();
+      background: transparent;
+      padding: 0;
+      height: auto;
+      min-width: auto;
+      margin-top: 15px;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 6px;
+
+      span {
+        @include transition();
+        @include font($fw-light, 15px, 22px);
+      }
+
+      svg {
+        @include transition();
+      }
+
+      &:hover {
+        background: transparent;
+
+        span,
+        svg {
+          @include transition();
+
+          color: $background-btn;
+        }
+      }
+    }
+  }
+
+  &__picture {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    right: 6%;
+    width: 100%;
+    height: fit-content;
+
+    @include desktops {
+      right: -12%;
+    }
+
+    @include phones {
+      right: 0;
+    }
+  }
+}
+
+.accent {
+  color: $tag-2;
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 72px 0 0;
+  position: relative;
+  z-index: 1;
+
+  @include tablets {
+    display: flex;
+    padding: 72px 0;
+  }
+
+  &__item {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    @include phones-landscape {
+      margin: 0 5px;
+    }
+  }
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  margin: 0;
+  bottom: 0;
+
+  li {
+    @include transition(all linear 0.3s);
+
+    display: block;
+    background: $secondary-text;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-right: 12px;
+    position: relative;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    button {
+      display: none;
+    }
+  }
+
+  .slick-active {
+    background: $primary-text;
+  }
+}
+
+.slick-dotted.slick-slider {
+  margin-bottom: 72px;
+}
+
+// footer
+.footer {
+  background-color: $bcg-footer;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    height: 100%;
+
+    @include phones {
+      flex-direction: column;
+      padding: 72px 0;
+    }
+  }
+
+  &__logo {
+    width: 193px;
+    height: 27px;
+
+    @include phones {
+      width: 198px;
+      height: 34px;
+    }
+  }
+
+  &__menu {
+    @include phones {
+      padding: 72px 0;
+    }
+
+    ul {
+      @include font($fw-base, 18px, 30px);
+
+      display: flex;
+      align-items: center;
+
+      @include phones {
+        flex-direction: column;
+      }
+    }
+
+    li {
+      padding: 0 16px;
+
+      @include phones {
+        padding: 27px 0;
+      }
+    }
+
+    a {
+      display: inline-block;
+      text-align: center;
+
+      &:hover {
+        font-weight: $fw-bold;
+      }
+
+      &:before {
+        display: block;
+        content: attr(title);
+        font-weight: $fw-bold;
+        height: 1px;
+        color: transparent;
+        overflow: hidden;
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__btn {
+    min-width: 138px;
+    height: 54px;
+
+    @include phones {
+      height: 72px;
+    }
+  }
+
+  &__copyright {
+    @include font($fw-light, 15px, 22px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $secondary-text;
+    padding: 13px 0 37px;
+
+    @include phones {
+      text-align: center;
+      padding: 0 0 26px;
+    }
+  }
+}

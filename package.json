@@ -1,0 +1,32 @@
+{
+  "name": "woombo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm dist/*",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html   --no-source-maps optimize --public-url ./",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sprite": "svg-sprite-generate -d src/img/icons -o src/img/sprite.svg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/woombo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "parcel-bundler": "latest",
+    "postcss-modules": "^4.0.0",
+    "sass": "^1.32.8",
+    "svg-sprite-generator": "0.0.7"
+  },
+  "dependencies": {
+    "j": "^1.0.0",
+    "normalize.css": "^8.0.1"
+  }
+}
